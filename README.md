@@ -72,9 +72,9 @@ nextflow run main.nf -profile singularity \
     --interproscan_data /path/to/interproscan-5.67-99.0/data
 ```
 
-### HPC Usage (MPIPZ Profile)
+### HPC Usage
 ```bash
-nextflow run main.nf -profile mpipz \
+nextflow run main.nf -profile singularity \
     --samplesheet samples.csv
 ```
 
@@ -230,7 +230,7 @@ Error: File existence/permissions problem in trying to open HMM file data/pfam/3
 ```
 A call to mkdir was unable to create the desired directory: /scratch
 ```
-**Solution**: Use the `mpipz` profile or add `-B /scratch` to singularity runOptions.
+**Solution**: Use your `own` profile or add `-B /scratch` to singularity runOptions.
 
 ### Error: MPI initialization failed
 **Solution**: Use `cleanEnv = true` in your singularity config to avoid environment conflicts.
