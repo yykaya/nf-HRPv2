@@ -59,6 +59,17 @@ process MAST {
   """
   mast -o ${meta}_mast ${meme_out} ${protein_fasta}
   cp ${meta}_mast/mast.txt ${meta}_mast_out.txt
-  cat ${meta}_mast_out.txt | grep -oE "${pattern}" > ${meta}_mast_geneIDs.txt
+  
+  # Extract gene IDs - try pattern first, fall back to extracting first column from MAST output
+  if grep -oE "${pattern}" ${meta}_mast_out.txt > ${meta}_mast_geneIDs.txt 2>/dev/null && [ -s ${meta}_mast_geneIDs.txt ]; then
+      echo "Extracted gene IDs using pattern: ${pattern}"
+  else
+      # Fallback: extract sequence names from MAST output (lines with e-value scores)
+      awk '/^[A-Za-z]/ && NF>=4 && \$3 ~ /[0-9]+e-[0-9]+/ {print \$1}' ${meta}_mast_out.txt > ${meta}_mast_geneIDs.txt || true
+      echo "Extracted gene IDs using fallback method"
+  fi
+  
+  # Ensure file exists even if empty
+  touch ${meta}_mast_geneIDs.txt
   """
 }
