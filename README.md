@@ -28,7 +28,7 @@ This project is forked and modified from:
 
 If you use this pipeline, please cite the original publication:
 
-> Andolfo, G., Di Donato, A., Chiaiese, P., De Natale, A., Pollio, A., Jones, J. D., ... & Ercolano, M. R. (2022). **Alien domains shaped the modular structure of plant NLR proteins.** *The Plant Journal*, 111(3), 811-823. https://doi.org/10.1111/tpj.15756
+> Andolfo, G., Dohm, J. C., & Himmelbauer, H. (2022). Prediction of NB‐LRR resistance genes based on full‐length sequence homology. The Plant Journal, 110(6), 1592-1602.. https://doi.org/10.1111/tpj.15756
 
 ---
 
